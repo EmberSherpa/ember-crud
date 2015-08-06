@@ -1,15 +1,18 @@
 <form>
   <div class="row">
     <label>
-      Title <input value={{title}}>
+      Title<br>
+      <input
+        type="text"
+        value={{title}}
+        oninput={{action "updateTitle" value="target.value"}}
+        >
     </label>
   </div>
   <div class="row">
     <label>
-      Content
-      <textarea>
-        {{content}}
-      </textarea>
+      Content<br>
+      <textarea>{{content}}</textarea>
     </label>
   </div>
   <div class="row">
