@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   actions: {
     save(post) {
       const payload = { data: post };
-      ajax({
+      return ajax({
         url: '/api/posts',
         type: 'POST',
         data: JSON.stringify(payload)

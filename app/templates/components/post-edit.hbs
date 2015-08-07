@@ -1,22 +1,24 @@
-<form>
-  <div class="row">
-    <label>
-      Title<br>
-      <input
-        type="text"
-        value={{title}}
-        oninput={{action "updateTitle" value="target.value"}}
-        ></label>
-  </div>
-  <div class="row">
-    <label>
-      Content<br>
-      <textarea
-        value={{content}}
-        onkeyup={{action "updateContent" value="target.value"}}></textarea>
-    </label>
-  </div>
-  <div class="row">
-    {{yield post this}}
-  </div>
-</form>
+<div class="{{if isLoading 'is-loading'}}">
+  <form class="{{if isLoading 'is-invisible'}}">
+    <div class="row">
+      <label>
+        Title<br>
+        <input
+          type="text"
+          value={{title}}
+          oninput={{action "updateTitle" value="target.value"}}
+          ></label>
+    </div>
+    <div class="row">
+      <label>
+        Content<br>
+        <textarea
+          value={{content}}
+          onkeyup={{action "updateContent" value="target.value"}}></textarea>
+      </label>
+    </div>
+    <div class="row">
+      {{yield this}}
+    </div>
+  </form>
+</div>
