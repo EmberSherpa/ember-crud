@@ -6,16 +6,17 @@
         type="text"
         value={{title}}
         oninput={{action "updateTitle" value="target.value"}}
-        >
-    </label>
+        ></label>
   </div>
   <div class="row">
     <label>
       Content<br>
-      <textarea>{{content}}</textarea>
+      <textarea
+        value={{content}}
+        onkeyup={{action "updateContent" value="target.value"}}></textarea>
     </label>
   </div>
   <div class="row">
-    {{yield}}
+    {{yield post this}}
   </div>
 </form>

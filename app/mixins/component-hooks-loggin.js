@@ -21,7 +21,7 @@ function log(hook) {
     this._super.apply(this, arguments);
     const name = this.elementId || this.construtor.toString();
     console.log(`${name} called ${hook} hook with`, arguments);
-  }
+  };
 }
 
 function instrumentActions(){
@@ -35,6 +35,6 @@ function instrumentActions(){
       const name = this.elementId || this.construtor.toString();
       console.log(`${name} called action ${actionName} with `, arguments);
       return callback.apply(this, arguments);
-    }
-  })
+    };
+  });
 }

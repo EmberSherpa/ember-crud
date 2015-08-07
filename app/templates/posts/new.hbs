@@ -1,4 +1,4 @@
 <h3>New Post</h3>
-{{#post-edit}}
-  <button {{action 'save'}}>Create</button> <button {{action 'discard'}}>Discard</button>
+{{#post-edit as |post component|}}
+  <button {{action 'save' post}}>Create</button> <button {{action 'discard' target=component}}>Discard</button>
 {{/post-edit}}
