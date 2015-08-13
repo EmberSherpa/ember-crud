@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+const { A } = Ember;
 const { isNumeric } = Ember.$;
 
 export default function() {
@@ -25,7 +26,7 @@ export default function() {
   this.get('/posts/:id', function(db, request){
     const { id } = request.params;
     const key = isNumeric(id) ? 'id' : 'slug';
-    const [ post ] = db.posts.filterBy(key, id);
+    const [ post ] = A(db.posts).filterBy(key, id);
     return {
       post: post
     };

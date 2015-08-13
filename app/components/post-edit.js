@@ -1,27 +1,24 @@
 import Ember from 'ember';
 import settings from 'ember-crud/settings';
-import difference from 'lodash/array/difference';
+import isEqual from 'ember-crud/utils/is-equal';
 
-const { computed, isEmpty } = Ember;
+const {
+  computed,
+  isEmpty,
+  A
+} = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
   isLoading: false,
   blogCategories: settings.categories,
   didReceiveAttrs(attrs) {
-    const { post } = attrs.newAttrs;
-    let title = '';
-    let content = '';
-    let categories = [];
-    if (post) {
-      title = post.value.title;
-      content = post.value.content;
-      categories = post.value.categories;
-    }
+    let { title, content, categories } = attrs.newAttrs.post.value;
+    categories = categories || [];
     this.setProperties({
-      title: title,
-      content: content,
-      categories: []
+      title: title || '',
+      content: content || '',
+      categories: categories.slice()
     });
   },
   postData: computed(
@@ -47,16 +44,12 @@ export default Ember.Component.extend({
     'title',
     'content',
     'post.content',
-    'categories',
+    'categories.[]',
     'post.categories', {
     get() {
-      const categories = this.get('categories');
-      const originalCategories = this.get('post.categories');
-      const diff = difference(categories, originalCategories);
-      const isCategoriesUnchanged = diff.length === 0;
       return  this.get('post.title') === this.get('title') &&
               this.get('post.content') === this.get('content') &&
-              isCategoriesUnchanged;
+              isEqual(this.get('categories'), this.get('post.categories'));
     }
   }),
   isChanged: computed.not('isUnchanged'),
@@ -86,14 +79,12 @@ export default Ember.Component.extend({
       this.set('content', value);
     },
     updateCategories(value) {
-      let categories = this.get('categories');
-      const index = categories.indexOf(value);
-      if ( index === -1 ) {
-        categories.push(value);
+      let categories = A(this.get('categories'));
+      if (categories.contains(value)) {
+        categories.removeObject(value);
       } else {
-        categories.splice(index, 1);
+        categories.pushObject(value);
       }
-      this.set('categories', categories);
     }
   }
 });
