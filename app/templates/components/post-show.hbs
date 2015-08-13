@@ -1,17 +1,17 @@
 <div class="post-show">
   <h3 class="post-title">
-    {{#if attrs.show-preview}}
-      {{#link-to 'posts.show' attrs.id}}{{attrs.title}}{{/link-to}}
+    {{#if preview}}
+      {{#link-to 'posts.show' post}}{{post.title}}{{/link-to}}
     {{else}}
-      {{attrs.title}}
+      {{post.title}}
     {{/if}}
   </h3>
   <p class="post-content">
-    {{#if attrs.show-preview}}
-      {{post-excerpt attrs.content}}
-      {{#link-to 'posts.show' attrs.id}}read more{{/link-to}}
+    {{#if preview}}
+      {{post-excerpt post.content}}
+      {{#link-to 'posts.show' post}}read more{{/link-to}}
     {{else}}
-      {{attrs.content}}
+      {{post.content}}
     {{/if}}
   </p>
 </div>

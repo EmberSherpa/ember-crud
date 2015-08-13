@@ -9,6 +9,9 @@ export default Mirage.Factory.extend({
   title(i) {
     return `Blog post ${i+1}`;
   },
+  slug(i) {
+    return `blog-post-${i}`;
+  },
   content(i) {
     return `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     Nam vel facilisis lectus, et ultrices turpis. Nunc eleifend justo nec cursus
