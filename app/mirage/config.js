@@ -1,3 +1,7 @@
+import Ember from 'ember';
+
+const { isNumeric } = Ember.$;
+
 export default function() {
 
   // These comments are here to help you get started. Feel free to delete them.
@@ -20,11 +24,11 @@ export default function() {
   // Single objects
   this.get('/posts/:id', function(db, request){
     const { id } = request.params;
-    const key = $.isNumeric(id) ? 'id' : 'slug';
+    const key = isNumeric(id) ? 'id' : 'slug';
     const [ post ] = db.posts.filterBy(key, id);
     return {
       post: post
-    }
+    };
   });
 
   /* POST shorthands */

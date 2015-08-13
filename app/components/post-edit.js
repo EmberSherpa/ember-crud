@@ -1,21 +1,27 @@
 import Ember from 'ember';
+import settings from 'ember-crud/settings';
+import difference from 'lodash/array/difference';
 
 const { computed, isEmpty } = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
   isLoading: false,
+  blogCategories: settings.categories,
   didReceiveAttrs(attrs) {
     const { post } = attrs.newAttrs;
     let title = '';
     let content = '';
+    let categories = [];
     if (post) {
       title = post.value.title;
       content = post.value.content;
+      categories = post.value.categories;
     }
     this.setProperties({
       title: title,
-      content: content
+      content: content,
+      categories: []
     });
   },
   postData: computed(
@@ -23,7 +29,7 @@ export default Ember.Component.extend({
     'title',
     'content', {
       get() {
-        let data = this.getProperties(['title', 'content']);
+        let data = this.getProperties(['title', 'content', 'categories']);
         let id = this.get('post.id');
         if (id) {
           data.id = id;
@@ -40,10 +46,17 @@ export default Ember.Component.extend({
     'post.title',
     'title',
     'content',
-    'post.content', {
+    'post.content',
+    'categories',
+    'post.categories', {
     get() {
+      const categories = this.get('categories');
+      const originalCategories = this.get('post.categories');
+      const diff = difference(categories, originalCategories);
+      const isCategoriesUnchanged = diff.length === 0;
       return  this.get('post.title') === this.get('title') &&
-              this.get('post.content') === this.get('content');
+              this.get('post.content') === this.get('content') &&
+              isCategoriesUnchanged;
     }
   }),
   isChanged: computed.not('isUnchanged'),
@@ -71,6 +84,16 @@ export default Ember.Component.extend({
     },
     updateContent(value) {
       this.set('content', value);
+    },
+    updateCategories(value) {
+      let categories = this.get('categories');
+      const index = categories.indexOf(value);
+      if ( index === -1 ) {
+        categories.push(value);
+      } else {
+        categories.splice(index, 1);
+      }
+      this.set('categories', categories);
     }
   }
 });

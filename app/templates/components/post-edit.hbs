@@ -18,6 +18,19 @@
       </label>
     </div>
     <div class="row">
+      <h4>Categories</h4>
+      {{#each blogCategories as |category|}}
+        <label>
+          <input
+            type="checkbox"
+            name="categories"
+            value={{category.id}}
+            onclick={{action "updateCategories" value="target.value"}}
+            > {{category.name}}
+        </label>
+      {{/each}}
+    </div>
+    <div class="row">
       {{yield this}}
     </div>
   </form>
