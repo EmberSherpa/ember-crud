@@ -2,5 +2,10 @@
 {{#post-edit
   on-save=(action 'save')
   as |component|}}
-  <button {{action 'save' target=component}}>Create</button> <button {{action 'discard' target=component}}>Discard</button>
+  <button {{action 'save' target=component}}
+          disabled={{not-eq component.isValid true}}
+    >Create</button>
+  <button {{action 'discard' target=component}}
+          disabled={{component.isUnchanged}}
+    >Discard</button>
 {{/post-edit}}

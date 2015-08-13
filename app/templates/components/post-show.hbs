@@ -1,1 +1,10 @@
-{{yield}}
+<div class="post-show">
+  <h3 class="post-title">{{attrs.title}}</h3>
+  <p class="post-content">
+    {{#if attrs.show-preview}}
+      {{preview}}
+    {{else}}
+      {{attrs.content}}
+    {{/if}}
+  </p>
+</div>

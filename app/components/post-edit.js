@@ -1,16 +1,29 @@
 import Ember from 'ember';
 
-const {computed} = Ember;
+const { computed, isEmpty } = Ember;
 
 export default Ember.Component.extend({
   tagName: '',
   title: '',
   content: '',
   isLoading: false,
-  post: computed('title', 'content', function(){
+  post: computed('title', 'content', {
+    get() {
       return this.getProperties(['title', 'content']);
     }
-  ),
+  }),
+  isValid: computed('title', {
+    get() {
+      return !isEmpty(this.get('title'));
+    }
+  }),
+  isUnchanged: computed('title', 'content', {
+    get() {
+      const title = this.get('title');
+      const content = this.get('content');
+      return isEmpty(title) && isEmpty(content);
+    }
+  }),
   actions: {
     save() {
       const post = this.get('post');
