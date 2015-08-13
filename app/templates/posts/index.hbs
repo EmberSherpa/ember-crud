@@ -1,3 +1,6 @@
 {{#each model.posts as |post|}}
-  {{post-show show-preview=true title=post.title content=post.content}}
+  {{post-show show-preview=true
+              id=post.id
+              title=post.title
+              content=post.content}}
 {{/each}}
