@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   actions: {
     save(post) {
       return ajax({
-        url: `/api/post/${post.id}`,
+        url: `/api/posts/${post.id}`,
         type: 'PUT',
         data: JSON.stringify({ post: post })
       }).then(()=>{

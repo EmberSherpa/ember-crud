@@ -34,17 +34,15 @@ export default function() {
   /*
     PUT shorthands
     */
-    this.put('/post/:id', 'post');
+    this.put('/posts/:id', 'post');
   /*
     this.put('/contacts/:id', 'user'); // specify the type of resource to be updated
   */
 
+  /* DELETE shorthands */
+    this.del('/posts/:id', 'post'); // specify the type of resource to be deleted
+
   /*
-    DELETE shorthands
-
-    this.del('/contacts/:id');
-    this.del('/contacts/:id', 'user'); // specify the type of resource to be deleted
-
     // Single object + related resources. Make sure parent resource is first.
     this.del('/contacts/:id', ['contact', 'addresses']);
   */

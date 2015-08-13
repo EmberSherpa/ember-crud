@@ -10,6 +10,7 @@ Router.map(function() {
     this.route('new');
     this.route('show', { path: ':slug' });
     this.route('edit', { path: ':slug/edit' });
+    this.route('delete', { path: ':slug/delete' });
   });
 });
 
