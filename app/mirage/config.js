@@ -18,7 +18,14 @@ export default function() {
   this.get('/posts', 'posts');
 
   // Single objects
-  this.get('/posts/:id', 'post');
+  this.get('/posts/:id', function(db, request){
+    const { id } = request.params;
+    const key = $.isNumeric(id) ? 'id' : 'slug';
+    const [ post ] = db.posts.filterBy(key, id);
+    return {
+      post: post
+    }
+  });
 
   /* POST shorthands */
 
@@ -26,8 +33,9 @@ export default function() {
 
   /*
     PUT shorthands
-
-    this.put('/contacts/:id');
+    */
+    this.put('/post/:id', 'post');
+  /*
     this.put('/contacts/:id', 'user'); // specify the type of resource to be updated
   */
 

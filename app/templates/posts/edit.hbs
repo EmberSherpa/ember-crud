@@ -1,0 +1,7 @@
+{{#post-edit  post=model
+              on-save=(action 'save')
+              as |component|}}
+  <button {{action 'save' target=component}}
+          disabled={{not-eq component.isSavable true}}
+    >Save</button>
+{{/post-edit}}

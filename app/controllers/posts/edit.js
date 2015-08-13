@@ -5,8 +5,8 @@ export default Ember.Controller.extend({
   actions: {
     save(post) {
       return ajax({
-        url: '/api/posts',
-        type: 'POST',
+        url: `/api/post/${post.id}`,
+        type: 'PUT',
         data: JSON.stringify({ post: post })
       }).then(()=>{
           this.transitionToRoute('posts');
