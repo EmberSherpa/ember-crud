@@ -4,7 +4,7 @@ import ComponentHooksLoggin from 'ember-crud/mixins/component-hooks-loggin';
 const { Component } = Ember;
 
 export function initialize() {
-  Component.reopen(ComponentHooksLoggin);
+  //Component.reopen(ComponentHooksLoggin);
 }
 
 export default {

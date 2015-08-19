@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import settings from 'ember-crud/settings';
 import isEqual from 'ember-crud/utils/is-equal';
+import ComponentHooksLoggin from 'ember-crud/mixins/component-hooks-loggin';
 
 const {
   computed,
@@ -8,16 +9,17 @@ const {
   A
 } = Ember;
 
-export default Ember.Component.extend({
-  tagName: '',
+export default Ember.Component.extend(ComponentHooksLoggin, {
+  tagName: 'div',
   isLoading: false,
   blogCategories: settings.categories,
-  didReceiveAttrs(attrs) {
-    let { title, content, categories } = attrs.newAttrs.post.value;
+  didReceiveAttrs() {
+    this._super(...arguments);
+    const post = this.get('post');
     categories = categories || [];
     this.setProperties({
-      title: title || '',
-      content: content || '',
+      title,
+      content,
       categories: categories.slice()
     });
   },

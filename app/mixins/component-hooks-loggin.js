@@ -3,17 +3,38 @@ import Ember from 'ember';
 const {on} = Ember;
 
 export default Ember.Mixin.create({
-  instrumentActions: on('init', instrumentActions),
+  // called from constructor of Component
+  // called when component is initialized
+  // only called once
   didInitAttrs: log('didInitAttrs'),
+  // called by the rendered
+  // called everytime that bound property is changed
+  // coalesced by run loop
   didReceiveAttrs: log('didReceiveAttrs'),
+  // before rendering begins
+  // called by the renderer
+  // unreleted to attribute changes
   willRender: log('willRender'),
+  // called once when component rendered initially
+  // setup jquery plugin
   didInsertElement: log('didInsertElement'),
+  // called after attrs changed after initial render
+  // called before DOM is updated (pre-render)
   didUpdateAttrs: log('didUpdateAttrs'),
+  // about to change DOM, (not 100%)
+  // might be called when there are no changes to DOM
   willUpdate: log('willUpdate'),
+  // 2nd and future renders
+  // post update
   didUpdate: log('didUpdate'),
+  // called everytime that changes are made (no matter what causes the rerender)
   didRender: log('didRender'),
+  // when element is being torn down
   willDestroyElement: log('willDestroyElement'),
-  didDestroyElement: log('didDestroyElement')
+  // DOM element is removed
+  didDestroyElement: log('didDestroyElement'),
+
+  instrumentActions: on('init', instrumentActions)
 });
 
 function log(hook) {
