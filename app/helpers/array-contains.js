@@ -15,10 +15,11 @@ export default Ember.Helper.extend({
     if (!array) {
       return;
     }
-    if (array !== this.get('_array')) {
-      this.set('_array', A(array));
-      return;
+    let _array = this.get('_array');
+    if (array !== _array) {
+      _array = new A(array);
+      this.set('_array', _array);
     }
-    return array.contains(object);
+    return _array.contains(object);
   }
 });

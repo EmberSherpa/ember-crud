@@ -6,10 +6,7 @@ export default Ember.Mixin.create({
   // called from constructor of Component
   // called when component is initialized
   // only called once
-  // assert here that variables were set
-  // didInitAttrs() {
-  //  Ember.assert('expects app', this.get('yapp'));
-  // }
+  // DO: make sure you have all required properties
   didInitAttrs: log('didInitAttrs'),
   // called by the rendered
   // called everytime that bound property is changed

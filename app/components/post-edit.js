@@ -6,20 +6,20 @@ import ComponentHooksLoggin from 'ember-crud/mixins/component-hooks-loggin';
 const {
   computed,
   isEmpty,
-  A
+  on
 } = Ember;
 
 export default Ember.Component.extend(ComponentHooksLoggin, {
   tagName: 'div',
   isLoading: false,
   blogCategories: settings.categories,
-  didInitAttrs() {
+  initialize: on('init', function(){
     this.setProperties({
       title: '',
       content: '',
       categories: []
-    })
-  },
+    });
+  }),
   didReceiveAttrs() {
     this._super(...arguments);
     this.copyPost();
@@ -38,7 +38,8 @@ export default Ember.Component.extend(ComponentHooksLoggin, {
   postData: computed(
     'post.id',
     'title',
-    'content', {
+    'content',
+    'categories.[]', {
       get() {
         let data = this.getProperties(['title', 'content', 'categories']);
         let id = this.get('post.id');
