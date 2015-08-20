@@ -4,4 +4,7 @@
   <button {{action 'save' target=component}}
           disabled={{not-eq component.isSavable true}}
     >Save</button>
+  <button {{action 'discard' target=component}}
+          disabled={{component.isUnchanged}}
+    >Discard</button>
 {{/post-edit}}

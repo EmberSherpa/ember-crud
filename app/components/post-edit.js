@@ -13,15 +13,27 @@ export default Ember.Component.extend(ComponentHooksLoggin, {
   tagName: 'div',
   isLoading: false,
   blogCategories: settings.categories,
+  didInitAttrs() {
+    this.setProperties({
+      title: '',
+      content: '',
+      categories: []
+    })
+  },
   didReceiveAttrs() {
     this._super(...arguments);
+    this.copyPost();
+  },
+  copyPost() {
     const post = this.get('post');
-    categories = categories || [];
-    this.setProperties({
-      title,
-      content,
-      categories: categories.slice()
-    });
+    if (post) {
+      let { title, content, categories = [] } = post;
+      this.setProperties({
+        title,
+        content,
+        categories: categories.slice()
+      });
+    }
   },
   postData: computed(
     'post.id',
@@ -69,10 +81,7 @@ export default Ember.Component.extend(ComponentHooksLoggin, {
         });
     },
     discard() {
-      this.setProperties({
-        title: '',
-        content: ''
-      });
+      this.copyPost();
     },
     updateTitle(value) {
       this.set('title', value);
@@ -81,7 +90,7 @@ export default Ember.Component.extend(ComponentHooksLoggin, {
       this.set('content', value);
     },
     updateCategories(value) {
-      let categories = A(this.get('categories'));
+      let categories = this.get('categories');
       if (categories.contains(value)) {
         categories.removeObject(value);
       } else {
