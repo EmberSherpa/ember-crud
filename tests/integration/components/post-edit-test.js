@@ -1,26 +1,43 @@
+import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import fillIn from 'ember-crud/tests/helpers/fill-in';
 
 moduleForComponent('post-edit', 'Integration | Component | post edit', {
   integration: true
 });
 
-test('it renders', function(assert) {
-  assert.expect(2);
+test('yields template', function(assert){
+  this.render(hbs`{{#post-edit}}foo-bar{{/post-edit}}`);
+  assert.ok(this.$('.row:contains(foo-bar)').length === 1, 'foo-bar was yielded');
+});
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test('post data is beind displayed', function(assert){
+  this.set('post', {
+    title: 'foo',
+    content: 'bar'
+  });
+  this.render(hbs`{{#post-edit post=post}}{{/post-edit}}`);
 
-  this.render(hbs`{{post-edit}}`);
+  assert.equal(this.$('input[type=text]').val(), 'foo', 'title is foo');
+  assert.equal(this.$('textarea').val(), 'bar', 'content is bar');
+});
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
+test('validation', function(assert){
   this.render(hbs`
-    {{#post-edit}}
-      template block text
-    {{/post-edit}}
-  `);
+    {{#post-edit as |component|}}
+      <span class="validation">{{if component.isValid 'valid' 'invalid'}}</span>
+      <span class="savable">{{if component.isSavable 'savable' 'not savable'}}</span>
+    {{/post-edit}}`
+  );
+  fillIn(this.$('textarea'), 'bar');
+  assert.equal(this.$('.validation').text(), 'invalid', 'invalid when no title is enterd');
+  assert.equal(this.$('.savable').text(), 'not savable', 'when invalid');
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  Ember.run(()=>{
+    fillIn(this.$('input[type=text]'), 'foo');
+  });
+
+  assert.equal(this.$('.validation').text(), 'valid', 'validition is valid after title was entered');
+  assert.equal(this.$('.savable').text(), 'savable', 'savable when valid');
 });
