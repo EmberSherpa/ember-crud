@@ -6,21 +6,23 @@ moduleForComponent('post-show', 'Integration | Component | post show', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(6);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.set('post', {
+    title: 'foo',
+    content: 'bar',
+    slug: 'foo-bar'
+  });
+  this.render(hbs`{{post-show post=post preview=preview}}`);
 
-  this.render(hbs`{{post-show}}`);
+  // show in full mode
+  assert.equal(this.$('.post-title').text().trim(), 'foo', 'title is visible');
+  assert.equal(this.$('.post-content').text().trim(), 'bar', 'content is visible');
+  assert.ok(this.$('a:contains(read more)').length === 0, 'read more link is not visible');
+  assert.ok(this.$('.post-show.full-content:visible').length === 1);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#post-show}}
-      template block text
-    {{/post-show}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  // show in preview mode
+  this.set('preview', true);
+  assert.ok(this.$('.post-show.with-excerpt:visible').length === 1);
+  assert.ok(this.$('a:contains(read more)').length === 1, 'read more link is visible');
 });

@@ -1,4 +1,4 @@
-<div class="post-show">
+<div class="post-show {{if preview 'with-excerpt' 'full-content'}}">
   <h3 class="post-title">
     {{#if preview}}
       {{#link-to 'posts.show' post}}{{post.title}}{{/link-to}}
