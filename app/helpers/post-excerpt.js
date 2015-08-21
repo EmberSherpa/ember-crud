@@ -3,7 +3,8 @@ import Ember from 'ember';
 const { isEmpty } = Ember;
 
 export function postExcerpt(params/*, hash*/) {
-  const [ content = '' ] = params;
+  let [ content ] = params;
+  content = content || '';
   let sentences = content.match( /[^\.!\?]+[\.!\?]+/g );
   return !isEmpty(sentences) ? sentences.slice(0, 2).join(' ') : '';
 }

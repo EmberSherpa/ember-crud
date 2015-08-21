@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 
-const { String } = Ember;
-const { dasherize } = String;
+const { dasherize } = Ember.String;
 
 export default Ember.Controller.extend({
   actions: {
@@ -15,7 +14,7 @@ export default Ember.Controller.extend({
         data: JSON.stringify({ post: post })
       }).then(()=>{
           this.transitionToRoute('posts');
-        }, (errors)=>{
+        }, (/* errors */)=>{
           // errors
         });
     }

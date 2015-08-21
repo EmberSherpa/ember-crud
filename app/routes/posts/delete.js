@@ -16,7 +16,7 @@ export default Ember.Route.extend({
       .then(()=>{
         this.transitionTo('posts');
       })
-      .catch((errors)=>{
+      .catch((/* errors */)=>{
         // handle errors
       });
     }

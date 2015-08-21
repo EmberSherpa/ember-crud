@@ -5,6 +5,6 @@ module('Unit | Helper | post excerpt');
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  var result = postExcerpt(42);
-  assert.ok(result);
+  var result = postExcerpt(['hello world']);
+  assert.ok(result != null);
 });

@@ -27,7 +27,8 @@ export default Ember.Component.extend(ComponentHooksLoggin, {
   copyPost() {
     const post = this.get('post');
     if (post) {
-      let { title, content, categories = [] } = post;
+      let { title, content, categories } = post;
+      categories = categories || [];
       this.setProperties({
         title,
         content,
