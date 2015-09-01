@@ -14,7 +14,9 @@
         Content<br>
         <textarea
           value={{content}}
-          onkeyup={{action "updateContent" value="target.value"}}></textarea>
+          onkeyup={{action "updateContent" value="target.value"}}
+          onchange={{action "updateContent" value="target.value"}}
+          ></textarea>
       </label>
     </div>
     <div class="row">
