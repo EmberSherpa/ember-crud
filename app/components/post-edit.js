@@ -11,6 +11,7 @@ const {
 } = Ember;
 
 export default Ember.Component.extend(Hooks, {
+  classNameBindings: ['isLoading'],
   isLoading: false,
   blogCategories: settings.categories,
   init() {

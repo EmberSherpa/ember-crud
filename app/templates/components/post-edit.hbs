@@ -1,40 +1,39 @@
-<div class="{{if isLoading 'is-loading'}}">
-  <form class="{{if isLoading 'is-invisible'}}">
-    <div class="row">
-      <label>
-        Title<br>
+<form class="{{if isLoading 'is-invisible'}} pure-form pure-form-stacked">
+  <fieldset>
+    {{#if attrs.post}}
+      <legend>Edit: {{attrs.post.title}}</legend>
+    {{/if}}
+    <label for="title">Title</label>
+    <input
+      class="pure-input-1-2"
+      id="title"
+      type="text"
+      value={{title}}
+      oninput={{action "updateTitle" value="target.value"}}
+      />
+    <label for="content">Content</label>
+    <textarea
+      class="pure-input-1-2"
+      rows=10
+      id="content"
+      value={{content}}
+      onkeyup={{action "updateContent" value="target.value"}}
+      onchange={{action "updateContent" value="target.value"}}
+      />
+    <label>Categories</label>
+    {{#each blogCategories as |category|}}
+      <label class="pure-checkbox">
         <input
-          type="text"
-          value={{title}}
-          oninput={{action "updateTitle" value="target.value"}}
-          ></label>
-    </div>
-    <div class="row">
-      <label>
-        Content<br>
-        <textarea
-          value={{content}}
-          onkeyup={{action "updateContent" value="target.value"}}
-          onchange={{action "updateContent" value="target.value"}}
-          ></textarea>
+          type="checkbox"
+          name="categories"
+          value={{category.id}}
+          onclick={{action "updateCategories" value="target.value"}}
+          checked={{array-contains categories category.id}}
+          > {{category.name}}
       </label>
-    </div>
-    <div class="row">
-      <h4>Categories</h4>
-      {{#each blogCategories as |category|}}
-        <label>
-          <input
-            type="checkbox"
-            name="categories"
-            value={{category.id}}
-            onclick={{action "updateCategories" value="target.value"}}
-            checked={{array-contains categories category.id}}
-            > {{category.name}}
-        </label>
-      {{/each}}
-    </div>
-    <div class="row">
-      {{yield this}}
-    </div>
-  </form>
-</div>
+    {{/each}}
+  </fieldset>
+  <div class="row">
+    {{yield this}}
+  </div>
+</form>

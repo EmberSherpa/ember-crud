@@ -1,17 +1,22 @@
-<div class="post-show {{if preview 'with-excerpt' 'full-content'}}">
-  <h3 class="post-title">
-    {{#if preview}}
-      {{#link-to 'posts.show' post}}{{post.title}}{{/link-to}}
-    {{else}}
-      {{post.title}}
-    {{/if}}
-  </h3>
-  <p class="post-content">
-    {{#if preview}}
-      {{post-excerpt post.content}}
-      {{#link-to 'posts.show' post}}read more{{/link-to}}
-    {{else}}
-      {{post.content}}
-    {{/if}}
-  </p>
-</div>
+<section class="post {{if preview 'with-excerpt' 'with-full-content'}}">
+    <header class="post-header">
+        <h2 class="post-title">
+          {{#if preview}}
+            {{#link-to 'posts.show' post}}{{post.title}}{{/link-to}}
+          {{else}}
+            {{post.title}}
+          {{/if}}
+        </h2>
+    </header>
+
+    <div class="post-description">
+        <p>
+          {{#if preview}}
+            {{post-excerpt post.content}}
+            {{#link-to 'posts.show' post}}read more{{/link-to}}
+          {{else}}
+            {{post.content}}
+          {{/if}}
+        </p>
+    </div>
+</section>

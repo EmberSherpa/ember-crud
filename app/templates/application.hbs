@@ -1,8 +1,19 @@
-<h2 id="title">Ember CRUD</h2>
+<div class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-5">
+        <div class="header">
+            <h1 class="brand-title">{{#link-to 'index'}}Ember CRUD{{/link-to}}</h1>
+            <h2 class="brand-tagline">idiomatic app</h2>
+            <nav class="nav">
+              <ul class="nav-list">
+                <li class="nav-item">
+                  {{#link-to 'posts.new' class="pure-button"}}New Post{{/link-to}}
+                </li>
+              </ul>
+            </nav>
+        </div>
+    </div>
 
-<ul>
-  <li>{{#link-to 'posts'}}Posts{{/link-to}}</li>
-  <li>{{#link-to 'posts.new'}}New Post{{/link-to}}</li>
-</ul>
-
-{{outlet}}
+    <div class="content pure-u-1 pure-u-md-4-5">
+      {{outlet}}
+    </div>
+</div>

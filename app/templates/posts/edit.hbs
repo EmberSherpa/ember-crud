@@ -1,10 +1,14 @@
 {{#post-edit  post=model
               on-save=(action 'save')
               as |component|}}
-  <button {{action 'save' target=component}}
-          disabled={{not-eq component.isSavable true}}
+  <button
+    class="pure-button pure-button-primary"
+    {{action 'save' target=component}}
+    disabled={{not-eq component.isSavable true}}
     >Save</button>
-  <button {{action 'discard' target=component}}
-          disabled={{component.isUnchanged}}
+  <button
+    class="pure-button"
+    {{action 'discard' target=component}}
+    disabled={{component.isUnchanged}}
     >Discard</button>
 {{/post-edit}}

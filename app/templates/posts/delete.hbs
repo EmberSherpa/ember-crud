@@ -1,3 +1,4 @@
-<span class="test-question">Are you sure you want to delete post called "{{model.title}}"?</span>
+<p class="test-question">Are you sure you want to delete post called "{{model.title}}"?</p>
 
-<button {{action 'confirm' model}}>Do it!</button> {{#link-to 'posts'}}Cancel{{/link-to}}
+<button class="pure-button pure-button-primary" {{action 'confirm' model}}>Do it!</button>
+{{#link-to 'posts' tagName='button' classNames='pure-button'}}Cancel{{/link-to}}

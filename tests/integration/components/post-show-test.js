@@ -17,12 +17,12 @@ test('it renders', function(assert) {
 
   // show in full mode
   assert.equal(this.$('.post-title').text().trim(), 'foo', 'title is visible');
-  assert.equal(this.$('.post-content').text().trim(), 'bar', 'content is visible');
+  assert.equal(this.$('.post-description').text().trim(), 'bar', 'content is visible');
   assert.ok(this.$('a:contains(read more)').length === 0, 'read more link is not visible');
-  assert.ok(this.$('.post-show.full-content:visible').length === 1);
+  assert.ok(this.$('.post.with-full-content:visible').length === 1);
 
   // show in preview mode
   this.set('preview', true);
-  assert.ok(this.$('.post-show.with-excerpt:visible').length === 1);
+  assert.ok(this.$('.post.with-excerpt:visible').length === 1);
   assert.ok(this.$('a:contains(read more)').length === 1, 'read more link is visible');
 });
