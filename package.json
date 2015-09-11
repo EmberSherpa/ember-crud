@@ -1,6 +1,6 @@
 {
   "name": "ember-crud",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Small description for ember-crud goes here",
   "private": true,
   "directories": {
@@ -16,11 +16,11 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Taras Mankovski <taras@embersherpa.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
-    "ember-cli": "1.13.5",
+    "ember-cli": "1.13.8",
     "ember-cli-app-version": "0.4.0",
     "ember-cli-babel": "^5.0.0",
     "ember-cli-dependency-checker": "^1.0.0",
