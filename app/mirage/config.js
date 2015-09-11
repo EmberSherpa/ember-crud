@@ -20,7 +20,11 @@ export default function() {
   */
 
   // Collections
-  this.get('/posts', 'posts');
+  this.get('/posts', function(db){
+    return {
+      posts: db.posts.reverse()
+    };
+  });
 
   // Single objects
   this.get('/posts/:id', function(db, request){
