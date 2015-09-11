@@ -18,8 +18,7 @@ test('post data is beind displayed', function(assert){
     title: 'foo',
     content: 'bar'
   });
-  this.render(hbs`{{#post-edit post=post}}{{/post-edit}}`);
-
+  this.render(hbs`{{post-edit post=post}}`);
   assert.equal(this.$('input[type=text]').val(), 'foo', 'title is foo');
   assert.equal(this.$('textarea').val(), 'bar', 'content is bar');
 });

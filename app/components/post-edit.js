@@ -1,39 +1,36 @@
 import Ember from 'ember';
 import settings from 'ember-crud/settings';
 import isEqual from 'ember-crud/utils/is-equal';
-import ComponentHooksLoggin from 'ember-crud/mixins/component-hooks-loggin';
+import Hooks from 'ember-hooks';
 
 const {
   computed,
   isEmpty,
-  on
+  getProperties,
+  get
 } = Ember;
 
-export default Ember.Component.extend(ComponentHooksLoggin, {
-  tagName: 'div',
+export default Ember.Component.extend(Hooks, {
   isLoading: false,
   blogCategories: settings.categories,
-  initialize: on('init', function(){
+  init() {
     this.setProperties({
       title: '',
       content: '',
       categories: []
     });
-  }),
-  didReceiveAttrs() {
     this._super(...arguments);
+  },
+  didReceiveAttrs() {
     this.copyPost();
   },
   copyPost() {
     const post = this.get('post');
     if (post) {
-      let { title, content, categories } = post;
-      categories = categories || [];
-      this.setProperties({
-        title,
-        content,
-        categories: categories.slice()
-      });
+      const values = getProperties(post, 'title', 'content');
+      const categories = get(post, 'categories') || [];
+      this.setProperties(values);
+      this.set('categories', categories.slice());
     }
   },
   postData: computed(
