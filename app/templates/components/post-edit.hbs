@@ -29,8 +29,17 @@
           > {{category.name}}
       </label>
     {{/each}}
+    {{#if isNew}}
+      <button class="pure-button pure-button-primary"
+              {{action 'save'}}
+              disabled={{not-eq isValid true}}>Create</button>
+    {{else}}
+      <button class="pure-button pure-button-primary"
+              {{action 'save'}}
+              disabled={{not-eq isSavable true}}>Save</button>
+      <button class="pure-button"
+              {{action 'discard'}}
+              disabled={{isUnchanged}}>Discard</button>
+    {{/if}}
   </fieldset>
-  <div class="row">
-    {{yield this}}
-  </div>
 </form>

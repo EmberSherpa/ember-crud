@@ -14,6 +14,8 @@ export default Ember.Component.extend(Hooks, {
   classNameBindings: ['isLoading'],
   isLoading: false,
   blogCategories: settings.categories,
+  isNew: Ember.computed.none('post'),
+  
   init() {
     this.setProperties({
       title: '',

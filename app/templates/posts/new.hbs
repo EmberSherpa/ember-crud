@@ -1,13 +1,5 @@
 <h1 class="content-subhead">New Post</h1>
 
 {{! BEGIN-SNIPPET templates.posts.new }}
-{{#post-edit
-  on-save=(action 'save')
-  as |component|}}
-  <button
-    class="pure-button pure-button-primary"
-    {{action 'save' target=component}}
-          disabled={{not-eq component.isValid true}}
-    >Create</button>
-{{/post-edit}}
+{{post-edit on-save=(action 'save')}}
 {{! END-SNIPPET}}
