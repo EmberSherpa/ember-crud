@@ -4,6 +4,7 @@
   Create more files in this directory to define additional factories.
 */
 import Mirage/*, {faker} */ from 'ember-cli-mirage';
+import settings from 'ember-crud/settings';
 
 export default Mirage.Factory.extend({
   title(i) {
@@ -24,5 +25,8 @@ export default Mirage.Factory.extend({
     Mauris gravida sed sapien eu dapibus. Praesent ${i+1} et enim sit amet mauris
     ullamcorper finibus eget eget magna. Morbi leo turpis, ultricies sit amet
     dictum at, pharetra vel est.`;
+  },
+  categories(i) {
+    return [settings.categories[i].id];
   }
 });

@@ -8,7 +8,11 @@
           {{/if}}
         </h2>
     </header>
-
+    <div class="post-meta">
+      {{#each post.categories as |category|}}
+        <span class="post-category post-category-{{category}}">{{category}}</span>
+      {{/each}}
+    </div> 
     <div class="post-description">
         <p>
           {{#if preview}}
