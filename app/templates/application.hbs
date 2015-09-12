@@ -8,6 +8,9 @@
               <li class="nav-item">
                 {{#link-to 'posts.new' class="pure-button"}}New Post{{/link-to}}
               </li>
+              <li class="nav-item">
+                {{#link-to 'about' class="pure-button"}}About{{/link-to}}
+              </li>
             </ul>
           </nav>
       </div>
@@ -18,8 +21,10 @@
         <div class="content-box">{{outlet}}</div>
       </div>
       <div class="pure-u-1 pure-u-lg-1-2">
-        <h1 class="content-subhead">Source Code</h1>
-        {{route-snippet routePath=currentPath}}
+        {{#if (not-eq currentPath 'about')}}
+          <h1 class="content-subhead">Source Code</h1>
+          {{route-snippet routePath=currentPath}}
+        {{/if}}
       </div>
     </div>
   </div>

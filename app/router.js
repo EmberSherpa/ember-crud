@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('edit', { path: ':slug/edit' });
     this.route('delete', { path: ':slug/delete' });
   });
+  this.route('about');
 });
 
 export default Router;

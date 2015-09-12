@@ -46,7 +46,8 @@
   },
   "ember-addon": {
     "paths": [
-      "lib/route-snippet"
+      "lib/route-snippet",
+      "lib/supporting"
     ]
   }
 }
