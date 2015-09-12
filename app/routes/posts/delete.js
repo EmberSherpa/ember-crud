@@ -1,3 +1,4 @@
+// BEGIN-SNIPPET routes.posts.delete
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 
@@ -22,3 +23,4 @@ export default Ember.Route.extend({
     }
   }
 });
+// END-SNIPPET

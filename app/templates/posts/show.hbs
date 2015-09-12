@@ -1,5 +1,7 @@
+{{! BEGIN-SNIPPET templates.posts.show }}
 {{post-show post=model}}
 <div class="post-actions">
   {{#link-to 'posts.edit' model tagName="button" classNames="pure-button"}}Edit{{/link-to}}
   {{#link-to 'posts.delete' model tagName="button" classNames="pure-button"}}Delete{{/link-to}}
 </div>
+{{! END-SNIPPET}}

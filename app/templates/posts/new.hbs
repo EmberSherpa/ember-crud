@@ -1,4 +1,6 @@
 <h3>New Post</h3>
+
+{{! BEGIN-SNIPPET templates.posts.new }}
 {{#post-edit
   on-save=(action 'save')
   as |component|}}
@@ -8,3 +10,4 @@
           disabled={{not-eq component.isValid true}}
     >Create</button>
 {{/post-edit}}
+{{! END-SNIPPET}}

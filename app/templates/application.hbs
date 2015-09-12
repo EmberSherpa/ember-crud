@@ -1,19 +1,25 @@
-<div class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-5">
-        <div class="header">
-            <h1 class="brand-title">{{#link-to 'index'}}Ember CRUD{{/link-to}}</h1>
-            <h2 class="brand-tagline">idiomatic app</h2>
-            <nav class="nav">
-              <ul class="nav-list">
-                <li class="nav-item">
-                  {{#link-to 'posts.new' class="pure-button"}}New Post{{/link-to}}
-                </li>
-              </ul>
-            </nav>
-        </div>
+<div calss="pure-g">
+  <div class="sidebar pure-u-1 pure-u-md-4-24">
+      <div class="header">
+          <h1 class="brand-title">{{#link-to 'index'}}Ember CRUD{{/link-to}}</h1>
+          <h2 class="brand-tagline">idiomatic app</h2>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                {{#link-to 'posts.new' class="pure-button"}}New Post{{/link-to}}
+              </li>
+            </ul>
+          </nav>
+      </div>
+  </div>
+  <div class="content pure-u-1 pure-u-md-20-24">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-3-5">
+        <div class="content-box">{{outlet}}</div>
+      </div>
+      <div class="pure-u-1 pure-u-lg-2-5">
+        {{route-snippet routePath=currentPath}}
+      </div>
     </div>
-
-    <div class="content pure-u-1 pure-u-md-4-5">
-      {{outlet}}
-    </div>
+  </div>
 </div>

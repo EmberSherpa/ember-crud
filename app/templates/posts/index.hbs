@@ -1,5 +1,7 @@
 <h1 class="content-subhead">Recent Posts</h1>
 
+{{! BEGIN-SNIPPET templates.posts.index }}
 {{#each model.posts as |post|}}
   {{post-show tagName="" post=post preview=true}}
 {{/each}}
+{{! END-SNIPPET}}

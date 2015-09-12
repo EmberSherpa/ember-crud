@@ -86,7 +86,7 @@ html, button, input, select, textarea,
 @media (min-width: 48em) {
     .content {
         padding: 2em 3em 0;
-        margin-left: 20%;
+        margin-left: 16.6667%;
     }
 
     .header {
@@ -117,4 +117,8 @@ h1 a {
 
 .is-invisible {
   visibility: hidden;
+}
+
+.content-box {
+  padding-right: 3em;
 }

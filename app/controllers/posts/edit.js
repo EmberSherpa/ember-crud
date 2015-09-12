@@ -1,3 +1,4 @@
+// BEGIN-SNIPPET controllers.posts.show
 import Ember from 'ember';
 import ajax from 'ic-ajax';
 
@@ -16,3 +17,4 @@ export default Ember.Controller.extend({
     }
   }
 });
+// END-SNIPPET

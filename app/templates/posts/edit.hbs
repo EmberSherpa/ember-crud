@@ -1,3 +1,4 @@
+{{! BEGIN-SNIPPET templates.posts.edit }}
 {{#post-edit  post=model
               on-save=(action 'save')
               as |component|}}
@@ -12,3 +13,4 @@
     disabled={{component.isUnchanged}}
     >Discard</button>
 {{/post-edit}}
+{{! END-SNIPPET}}
