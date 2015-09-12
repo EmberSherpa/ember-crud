@@ -1,11 +1,8 @@
 <form class="{{if isLoading 'is-invisible'}} pure-form pure-form-stacked">
   <fieldset>
-    {{#if attrs.post}}
-      <legend>Edit: {{attrs.post.title}}</legend>
-    {{/if}}
     <label for="title">Title</label>
     <input
-      class="pure-input-1-2"
+      class="pure-input-1"
       id="title"
       type="text"
       value={{title}}
@@ -13,7 +10,7 @@
       />
     <label for="content">Content</label>
     <textarea
-      class="pure-input-1-2"
+      class="pure-input-1"
       rows=10
       id="content"
       value={{content}}

@@ -1,5 +1,7 @@
+<h1 class="content-subhead">Edit Post</h1>
+
 {{! BEGIN-SNIPPET templates.posts.edit }}
-{{#post-edit  post=model
+{{#post-edit  post=model.post
               on-save=(action 'save')
               as |component|}}
   <button

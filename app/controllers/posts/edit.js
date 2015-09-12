@@ -9,8 +9,8 @@ export default Ember.Controller.extend({
         url: `/api/posts/${post.id}`,
         type: 'PUT',
         data: JSON.stringify({ post: post })
-      }).then(()=>{
-          this.transitionToRoute('posts');
+      }).then((result)=>{
+          this.transitionToRoute('posts.show', result.post.slug);
         }, (/* errors */)=>{
           // errors
         });

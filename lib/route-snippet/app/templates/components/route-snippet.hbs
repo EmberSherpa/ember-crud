@@ -1,4 +1,4 @@
 {{#each snippets as |snippet|}}
-  <h4>{{snippet.path}}</h4>
-  {{code-snippet name=snippet.name}}
+  <h4 class="snippet-path">{{snippet.path}}</h4>
+  {{code-snippet classNames="snippet-code" name=snippet.name}}
 {{/each}}

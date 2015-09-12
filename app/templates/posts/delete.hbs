@@ -1,4 +1,6 @@
-<p class="test-question">Are you sure you want to delete post called "{{model.title}}"?</p>
+<h1 class="content-subhead">Delete Post</h1>
+
+<p class="test-question">Are you sure you want to delete post called "{{model.post.title}}"?</p>
 
 <button class="pure-button pure-button-primary" {{action 'confirm' model}}>Do it!</button>
 {{#link-to 'posts' tagName='button' classNames='pure-button'}}Cancel{{/link-to}}

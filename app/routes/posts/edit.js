@@ -4,9 +4,7 @@ import ajax from 'ic-ajax';
 
 export default Ember.Route.extend({
   model(params) {
-    return ajax(`/api/posts/${params.slug}`).then(function(response){
-      return response.post;
-    });
+    return ajax(`/api/posts/${params.slug}`);
   }
 });
 // END-SNIPPET

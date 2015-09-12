@@ -1,7 +1,9 @@
+<h1 class="content-subhead">Show Post</h1>
+
 {{! BEGIN-SNIPPET templates.posts.show }}
-{{post-show post=model}}
+{{post-show post=model.post}}
 <div class="post-actions">
-  {{#link-to 'posts.edit' model tagName="button" classNames="pure-button"}}Edit{{/link-to}}
-  {{#link-to 'posts.delete' model tagName="button" classNames="pure-button"}}Delete{{/link-to}}
+  {{#link-to 'posts.edit' model.post.slug tagName="button" classNames="pure-button"}}Edit{{/link-to}}
+  {{#link-to 'posts.delete' model.post.slug tagName="button" classNames="pure-button"}}Delete{{/link-to}}
 </div>
 {{! END-SNIPPET}}
